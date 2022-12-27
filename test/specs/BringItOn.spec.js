@@ -69,25 +69,19 @@ describe("Bring It On", () => {
     const pageTitle = await $("head > title").getTitle();
     expect(pageTitle).toMatch("how to gain dominance among developers");
 
-    //Check Code
+    // Check Code
 
-    const codeone = await $(
-      "body > div.wrap > div.container > div.content > div.post-view.js-post-view > div.highlighted-code > div.source.bash > ol > li:nth-child(1) > div"
-    ).getText();
+    const codeone = await $('//li/div[text()=" user.name "]').getText();
     expect(codeone).toEqual(
-      'git config --global user.name "New Sheriff in Town"'  
+      'git config --global user.name "New Sheriff in Town"'
     );
 
-    const codetwo = await $(
-      "body > div.wrap > div.container > div.content > div.post-view.js-post-view > div.highlighted-code > div.source.bash > ol > li:nth-child(3) > div"
-    ).getText();
+    const codetwo = await $('//li/div[text()=" HEAD ^ "]').getText();
     expect(codetwo).toEqual(
       'git reset $ (git commit-tree HEAD ^ {tree} -m "Legacy code")'
     );
 
-    const codethree = await $(
-      "body > div.wrap > div.container > div.content > div.post-view.js-post-view > div.highlighted-code > div.source.bash > ol > li:nth-child(5) > div"
-    ).getText();
+    const codethree = await $('//li/div[text()=" origin master "]').getText();
 
     expect(codethree).toEqual("git push origin master --force");
 
